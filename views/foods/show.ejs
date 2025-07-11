@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= foods.name %></title>
+</head>
+<body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1><%= foods.name %></h1>
+    <ul>
+        <li>Ingredients: <%= foods.ingredients %></li>
+        <li>Notes: <%= foods.notes %></li>
+        <li>Safe for Vegans?: <%= foods.isVegan %></li>
+        <li><a href="<%= foods.recipeLink %>" target="_blank">Link to Recipe</a></li>
+        <% if (foods.status === 'lovedIt') {  %>
+            <li>Did I like it?: You loved it!</li>
+        <% } else if (foods.status === 'hatedIt') { %>
+            <li>Did I like it?: Gross!</li>
+        <% } else if (foods.status === 'neutral') { %>
+            <li>Did I like it?: Meh.</li>
+        <% } else if (foods.status === 'haveYetToTry') { %>
+            <li>Did I like it?: You haven't tried it yet!</li>
+        <% } %>
+    </ul>
+    
+    <form action="/users/<%= user._id %>/foods/<%= foods._id %>?_method=DELETE" method="POST">
+        <button type="submit">Delete this Recipe</button>
+    </form>
+
+    <a href="/users/<%= user._id %>/foods/<%= foods._id %>/edit">
+        <button type="submit">Edit this Recipe</button>
+    </a>
+</body>
+</html>

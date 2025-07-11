@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= pantry.name %></title>
+</head>
+<body>
+    <%- include('../partials/navbar.ejs') %>
+    <% storage.forEach(item => {  %>
+        <h1><%= item.name %></h1>
+        <ul>
+            <li>Ingredients: <%= item.ingredients %></li>
+            <li>Notes: <%= item.notes %></li>
+            <li>Do the item contains any meat or dairy product?: <%= item.isVegan %></li>
+            <li><a href="<%= item.recipeLink %>" target="_blank">Link to Recipe</a></li>
+            <% if (item.status === 'enjoyed') {  %>
+                <li>Did <%= users.username %> like it?: You loved it!</li>
+            <% } else if (item.status === 'hatedIt') { %>
+                <li>Did <%= users.username %> like it?: Gross!</li>
+            <% } else if (item.status === 'neutral') { %>
+                <li>Did <%= users.username %> like it?: Meh.</li>
+            <% } else if (item.status === 'haveYetToTry') { %>
+                <li>Did <%= users.username %> like it?: You haven't tried it yet!</li>
+            <% } %>
+        </ul>
+
+    <%  }) %>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Item</title>
+</head>
+<body>
+    <%- include('../partials/navbar.ejs') %>
+    <h1>Add a new Dish!</h1>
+    <form action="/users/<%= user._id %>/foods" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name">
+
+        <label for="ingredients">Ingredients:</label>
+        <input type="text" name="ingredients" id="ingredients">
+
+        <label for="recipeLink">Recipe Link:</label>
+        <input type="text" name="recipeLink" id="recipeLink">
+
+        <label for="notes">Notes:</label>
+        <textarea type="text" name="notes" id="notes"></textarea>
+
+        <label for="isVegan">Can vegans consume?:</label>
+        <input type="checkbox" name="isVegan" id="isVegan">
+
+        <label for="status">Status:</label>
+        <select name="status" id="status">
+            <option value="lovedIt">Loved it!</option>
+            <option value="ew">wasn't for me!</option>
+            <option value="nice!!">it was okay!</option>
+            <option value="never ate it">Haven't tried it yet</option>
+        </select>
+
+        <button type="submit">Add Food Dish</button>
+    </form>
+</body>
+</html>

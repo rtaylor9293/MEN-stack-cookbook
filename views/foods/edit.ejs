@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit this Recipe</title>
+</head>
+<body>
+    <%- include('../partials/navbar.ejs') %>
+    <h1>What would you like to change about <%= foods.name %>?</h1>
+    <form action="/users/<%= user._id %>/foods/<%= foods._id %>?_method=PUT" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" value="<%= foods.name %>">
+
+        <label for="ingredients">Ingredients:</label>
+        <input type="text" name="ingredients" id="ingredients" value="<%= foods.ingredients %>">
+
+        <label for="recipeLink">Recipe Link:</label>
+        <input type="text" name="recipeLink" id="recipeLink" value="<%= foods.recipeLink %>">
+
+        <label for="notes">Notes:</label>
+        <textarea type="text" name="notes" id="notes"><%= foods.notes %></textarea>
+
+        <label for="isVegan">Safe for Vegans?:</label>
+        <input type="checkbox" name="isVegan" id="isVegan" value="<%= foods.isVegan %>">
+
+        <label for="status">Status:</label>
+        <select name="status" id="status">
+            <option value="lovedIt"
+            <%= foods.status === 'lovedIt' ? 'selected' : '' %>
+            >Loved it!</option>
+
+            <option value="hatedIt"
+            <%= foods.status === 'hatedIt' ? 'selected' : '' %>
+            >Hated it!</option>
+
+            <option value="neutral"
+            <%= foods.status === 'neutral' ? 'selected' : '' %>
+            >Meh</option>
+
+            <option value="haveYetToTry"
+            <%= foods.status === 'haveYetToTry' ? 'selected' : '' %>
+            >Haven't tried it yet</option>
+        </select>
+
+        <button type="submit">Update this Recipe</button>
+    </form>
+</body>
+</html>
