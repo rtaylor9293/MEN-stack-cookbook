@@ -8,7 +8,6 @@ const foodSchema = new mongoose.Schema({
   ingredients: String, 
   recipeLink: String, 
   notes: String,
-  isVegan: Boolean,
   status: {
     type: String, 
     enum: ['lovedIt', 'hatedIt', 'neutral', 'haveYetToTry']

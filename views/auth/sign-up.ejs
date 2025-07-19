@@ -6,9 +6,9 @@
   <title>Sign Up</title>
 </head>
 <body>
-  <%- include('../partials/navbar.ejs') %>
+  <%- include('../partials/_navbar.ejs') %>
   <h1>Create a new account!</h1>
-  <form action="/auth/SignUp.ejs" method="POST">
+  <form action="/auth/sign-up" method="POST">
     <label for="username">Username:</label>
     <input type="text" name="username" id="username" required />
 

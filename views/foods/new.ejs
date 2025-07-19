@@ -6,7 +6,7 @@
     <title>Add Item</title>
 </head>
 <body>
-    <%- include('../partials/navbar.ejs') %>
+    <%- include('../partials/_navbar.ejs') %>
     <h1>Add a new Dish!</h1>
     <form action="/users/<%= user._id %>/foods" method="POST">
         <label for="name">Name:</label>
@@ -21,15 +21,15 @@
         <label for="notes">Notes:</label>
         <textarea type="text" name="notes" id="notes"></textarea>
 
-        <label for="isVegan">Can vegans consume?:</label>
+        <label for="isVegan">Safe for Vegans?:</label>
         <input type="checkbox" name="isVegan" id="isVegan">
 
         <label for="status">Status:</label>
         <select name="status" id="status">
             <option value="lovedIt">Loved it!</option>
-            <option value="ew">wasn't for me!</option>
-            <option value="nice!!">it was okay!</option>
-            <option value="never ate it">Haven't tried it yet</option>
+            <option value="hatedIt">Hated it!</option>
+            <option value="neutral">Meh</option>
+            <option value="haveYetToTry">Haven't tried it yet</option>
         </select>
 
         <button type="submit">Add Food Dish</button>

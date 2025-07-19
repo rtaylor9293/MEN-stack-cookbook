@@ -6,7 +6,7 @@
     <title>Edit this Recipe</title>
 </head>
 <body>
-    <%- include('../partials/navbar.ejs') %>
+    <%- include('../partials/_navbar.ejs') %>
     <h1>What would you like to change about <%= foods.name %>?</h1>
     <form action="/users/<%= user._id %>/foods/<%= foods._id %>?_method=PUT" method="POST">
         <label for="name">Name:</label>
@@ -21,7 +21,7 @@
         <label for="notes">Notes:</label>
         <textarea type="text" name="notes" id="notes"><%= foods.notes %></textarea>
 
-        <label for="isVegan">Safe for Vegans?:</label>
+        <label for="isVegan">is it safe for Vegans?:</label>
         <input type="checkbox" name="isVegan" id="isVegan" value="<%= foods.isVegan %>">
 
         <label for="status">Status:</label>

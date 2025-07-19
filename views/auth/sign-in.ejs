@@ -6,9 +6,9 @@
   <title>Sign In</title>
 </head>
 <body>
-  <%- include('../partials/navbar.ejs') %>
+  <%- include('../partials/_navbar.ejs') %>
   <h1>Sign in to your Account!</h1>
-  <form action="/auth/signin.ejs" method="POST">
+  <form action="/auth/sign-in" method="POST">
     <label for="username">Username:</label>
     <input type="text" name="username" id="username" required />
 

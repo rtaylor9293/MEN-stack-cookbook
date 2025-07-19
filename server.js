@@ -6,17 +6,14 @@ const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 const morgan = require('morgan');
 const session = require('express-session');
-const isSignedIn = require('./middleware/usersignin.js');
-const passUserToView = require('./middleware/passuser.js');
+const isSignedIn = require('./middleware/is-signed-in.js');
+const passUserToView = require('./middleware/pass-user-to-view.js');
 
-const path = require('path');
-app.use('/node_modules', express.static(path.join(__dirname, 'node_modules')));
+const authController = require('./controllers/auth.js');
+const foodsController = require('./controllers/foods.js');
+const usersController = require('./controllers/users.js');
 
-const authController = require('./controller/auth.js');
-const foodsController = require('./controller/foods.js');
-const usersController = require('./controller/users.js');
-
-const port = process.env.PORT ? process.env.PORT : 3500;
+const port = process.env.PORT ? process.env.PORT : '3500';
 
 mongoose.connect(process.env.MONGODB_URI);
 
@@ -34,7 +31,7 @@ app.use(
     saveUninitialized: true,
   })
 );
-app.set('view-engine', 'ejs');
+
 app.get('/', (req, res) => {
   res.render('index.ejs', {
     user: req.session.user,
@@ -43,7 +40,7 @@ app.get('/', (req, res) => {
 
 
 app.use(passUserToView);
-app.use('/auth', authController);  
+app.use('/auth', authController);
 app.use(isSignedIn);
 app.use('/users/:userId/foods', foodsController);
 app.use(usersController);
